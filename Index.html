@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- ===== SEO & META ===== -->
     <title>Prince Ladies Tailor | Bespoke Ethnic Wear & Designer Dresses</title>
     <meta name="description" content="Prince Ladies Tailor in Vadodara – bespoke dresses, blouses, gowns &amp; Chaniya Choli. Master tailor Haresh V. Kalani. Premium craftsmanship since 2010." />
     <meta name="keywords" content="ladies tailor, bespoke dresses, designer blouses, gowns, chaniya choli, Vadodara tailor, ethnic wear, custom tailoring" />
@@ -15,9 +14,8 @@
     <meta property="og:description" content="Premium custom-tailored dresses, blouses, gowns &amp; Chaniya Choli in Vadodara. Crafted with precision by Haresh V. Kalani." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://princeladiestailor.com" />
-    <meta property="og:image" content="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=1200&auto=format&fit=crop" />
 
-    <!-- Favicon -->
+    <!-- Favicon (inline SVG) -->
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%230a0a0a' stroke='%23D4AF37' stroke-width='2'/%3E%3Cpath d='M35 25 C0 5,5 65,45 65 C85 65,95 25,65 15 C40 5,20 40,40 85' fill='none' stroke='%23D4AF37' stroke-width='3' stroke-linecap='round'/%3E%3Cline x1='35' y1='25' x2='65' y2='85' stroke='%23ffffff' stroke-width='3' stroke-linecap='round'/%3E%3Cellipse cx='36' cy='27' rx='1.5' ry='4' fill='%230a0a0a' stroke='%23ffffff' stroke-width='1' transform='rotate(-63 36 27)'/%3E%3C/svg%3E" type="image/svg+xml" />
 
     <!-- JSON-LD Structured Data -->
@@ -50,9 +48,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 
     <style>
-        /* ============================================================
-                   ROOT VARIABLES (Default: Night Theme)
-                   ============================================================ */
+        /* ========== ROOT VARIABLES (Default: Night Theme) ========== */
         :root {
             --bg-color: #0a0a0a;
             --surface-color: #141414;
@@ -67,14 +63,10 @@
             --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             --nav-bg: rgba(0, 0, 0, 0.85);
             --hero-overlay: rgba(0, 0, 0, 0.65);
-            --hero-bg-start: #0a0a0a;
-            --hero-bg-end: #1a1008;
             --hero-bg-image: url('https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=1920&auto=format&fit=crop');
         }
 
-        /* ============================================================
-                   THEME CLASSES (Applied by JS)
-                   ============================================================ */
+        /* ========== THEME CLASSES ========== */
         body.theme-morning {
             --bg-color: #f5f0e6;
             --surface-color: #e8e0d4;
@@ -83,14 +75,10 @@
             --text-muted: #4a4a4a;
             --accent-gold: #b8860b;
             --accent-gold-hover: #d4a017;
-            --gold-glow: rgba(184, 134, 11, 0.25);
             --nav-bg: rgba(245, 240, 230, 0.92);
             --hero-overlay: rgba(255, 248, 235, 0.30);
-            --hero-bg-start: #e8dcc8;
-            --hero-bg-end: #f5ede0;
             --shadow-heavy: 0 25px 50px rgba(0, 0, 0, 0.15);
         }
-
         body.theme-afternoon {
             --bg-color: #eef2f5;
             --surface-color: #e2e8ed;
@@ -99,11 +87,796 @@
             --text-muted: #3d3d5c;
             --accent-gold: #c9a84c;
             --accent-gold-hover: #dbb95c;
-            --gold-glow: rgba(201, 168, 76, 0.25);
             --nav-bg: rgba(238, 242, 245, 0.92);
             --hero-overlay: rgba(220, 230, 240, 0.35);
-            --hero-bg-start: #d6dee6;
-            --hero-bg-end: #eef2f5;
+            --shadow-heavy: 0 25px 50px rgba(0, 0, 0, 0.12);
+        }
+        body.theme-night {
+            --bg-color: #0a0a0a;
+            --surface-color: #141414;
+            --surface-light: #1f1f1f;
+            --text-main: #f0f0f0;
+            --text-muted: #cccccc;
+            --accent-gold: #D4AF37;
+            --accent-gold-hover: #e8c454;
+            --nav-bg: rgba(0, 0, 0, 0.85);
+            --hero-overlay: rgba(0, 0, 0, 0.65);
+            --shadow-heavy: 0 25px 50px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Smooth transitions */
+        body { transition: background-color 1s ease, color 1s ease; }
+
+        /* ========== RESET & BASE ========== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            padding-top: 70px;
+            overflow: hidden;
+        }
+        h1, h2, h3, .brand-font { font-family: 'Playfair Display', serif; }
+        a { text-decoration: none; color: inherit; }
+
+        /* ========== SPLASH SCREEN ========== */
+        #splash-screen {
+            position: fixed; inset: 0; z-index: 9999;
+            background-color: var(--bg-color);
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+            will-change: transform;
+        }
+        #splash-screen.slide-up { transform: translateY(-100%); }
+        .splash-content { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 20px; }
+        .splash-logo {
+            width: 110px; height: 110px; opacity: 0; transform: scale(0.8);
+            animation: popIn 0.9s cubic-bezier(0.2, 0.6, 0.2, 1) forwards 0.2s;
+            margin-bottom: 28px;
+            filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.15));
+        }
+        .splash-logo .thread { stroke-dasharray: 200; animation: drawThread 2.8s ease-out forwards 0.3s; }
+        @keyframes drawThread { 0% { stroke-dashoffset: 200; } 100% { stroke-dashoffset: 0; } }
+        @keyframes popIn { 0% { opacity:0; transform:scale(0.8); } 100% { opacity:1; transform:scale(1); } }
+        .splash-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 6vw, 3.2rem);
+            color: var(--text-main);
+            text-transform: uppercase; letter-spacing: 2px;
+            opacity:0; transform:translateY(30px);
+            animation: revealUp 0.8s cubic-bezier(0.2, 0.6, 0.2, 1) forwards 0.6s;
+        }
+        .splash-tagline {
+            font-size: clamp(0.75rem, 1.5vw, 1rem);
+            letter-spacing: 6px; color: var(--accent-gold);
+            text-transform: uppercase; margin-top: 10px;
+            opacity:0; transform:translateY(20px);
+            animation: revealUp 0.8s cubic-bezier(0.2, 0.6, 0.2, 1) forwards 0.9s;
+        }
+        .splash-loader {
+            margin-top: 40px; width: 50px; height: 2px;
+            background: rgba(255,255,255,0.08); border-radius: 4px; overflow: hidden;
+            opacity:0; animation: fadeIn 0.6s forwards 1.2s;
+        }
+        .splash-loader::after {
+            content: ''; display: block; width: 40%; height: 100%;
+            background: var(--accent-gold); border-radius: 4px;
+            animation: loadProgress 2.2s ease-in-out forwards;
+        }
+        @keyframes loadProgress { 0% { transform:translateX(-100%); } 100% { transform:translateX(300%); } }
+        @keyframes revealUp { to { opacity:1; transform:translateY(0); } }
+        @keyframes fadeIn { to { opacity:1; } }
+
+        /* ========== TOP NAVIGATION ========== */
+        .top-nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: var(--nav-bg); backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.10);
+            padding: 8px 24px; display: flex; align-items: center; justify-content: space-between;
+            height: 70px; transition: background 0.8s ease, border-color 0.8s ease;
+        }
+        .top-nav .nav-left { display: flex; align-items: center; gap: 12px; }
+        .top-nav .nav-logo { width: 44px; height: 44px; flex-shrink: 0; }
+        .top-nav .nav-logo svg { width: 100%; height: 100%; display: block; }
+        .top-nav .brand-name { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--text-main); letter-spacing: 1px; transition: color 0.8s ease; }
+        .top-nav .brand-name .gold { color: var(--accent-gold); }
+        .top-nav .nav-right { display: flex; align-items: center; gap: 16px; }
+        .top-nav .viksit-bharat {
+            display: flex; align-items: center; gap: 8px;
+            font-size: 0.85rem; font-weight: 700; color: var(--text-main);
+            background: rgba(255,255,255,0.04); padding: 6px 14px 6px 10px;
+            border-radius: 30px; border: 1px solid rgba(255,255,255,0.06);
+            transition: background 0.3s ease, color 0.8s ease, border-color 0.8s ease;
+        }
+        .top-nav .viksit-bharat .flag { font-size: 1.4rem; line-height: 1; }
+        .top-nav .viksit-bharat:hover { background: rgba(212, 175, 55, 0.10); border-color: var(--accent-gold); }
+
+        @media (max-width: 768px) {
+            .top-nav { padding: 8px 16px; height: 60px; }
+            .top-nav .brand-name { font-size: 0.9rem; }
+            .top-nav .nav-logo { width: 36px; height: 36px; }
+            .top-nav .viksit-bharat { font-size: 0.7rem; padding: 4px 10px 4px 8px; }
+            .top-nav .viksit-bharat .flag { font-size: 1.1rem; }
+            body { padding-top: 60px; }
+        }
+        @media (max-width: 480px) {
+            .top-nav .brand-name { font-size: 0.75rem; }
+            .top-nav .viksit-bharat span:not(.flag) { display: none; }
+            .top-nav .viksit-bharat { padding: 4px 8px; background: transparent; border: none; }
+            .top-nav .viksit-bharat .flag { font-size: 1.4rem; }
+        }
+
+        /* ========== REUSABLE LOGO ========== */
+        .brand-logo-svg {
+            width: clamp(70px, 10vw, 100px); height: clamp(70px, 10vw, 100px);
+            filter: drop-shadow(0 5px 20px rgba(212, 175, 55, 0.15));
+            flex-shrink: 0;
+        }
+        .brand-logo-svg .thread-path { stroke-dasharray: 200; animation: drawThread 3s ease-out forwards; }
+
+        /* ========== HERO ========== */
+        .hero {
+            position: relative;
+            background-image: var(--hero-bg-image);
+            background-size: cover; background-position: center 20%; background-attachment: fixed;
+            display: flex; align-items: center; justify-content: center;
+            min-height: calc(100vh - 70px);
+            padding: 40px 20px 180px;
+            color: #fff;
+            transition: background-image 0.3s ease;
+        }
+        .hero::before {
+            content: ''; position: absolute; inset: 0;
+            background: var(--hero-overlay);
+            backdrop-filter: blur(2px);
+            z-index: 1;
+            transition: background 1s ease, backdrop-filter 1s ease;
+        }
+        .hero-content {
+            position: relative; z-index: 2;
+            width: 100%; max-width: 860px;
+            display: flex; flex-direction: column; align-items: center; text-align: center;
+            background: rgba(0,0,0,0.40);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            padding: clamp(30px, 5vw, 50px) clamp(20px, 4vw, 40px) clamp(32px, 5vw, 55px);
+            border-radius: 20px;
+            box-shadow: var(--shadow-heavy);
+            transition: background 1s ease, border-color 1s ease, box-shadow 1s ease;
+        }
+        @supports not (backdrop-filter: blur(8px)) {
+            .hero-content { background: rgba(0,0,0,0.75); }
+        }
+        .hero-logo-wrap { display: flex; flex-direction: column; align-items: center; margin-bottom: 18px; }
+        .hero-brand-name {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5.5vw, 3.8rem);
+            color: #fff; letter-spacing: 2px; text-transform: uppercase;
+            text-shadow: 2px 2px 16px rgba(0,0,0,0.9);
+            line-height: 1.1; margin-top: 6px;
+        }
+        .hero-brand-tagline {
+            font-size: clamp(0.7rem, 1.2vw, 1.05rem);
+            letter-spacing: clamp(4px, 1vw, 7px);
+            color: var(--accent-gold); text-transform: uppercase;
+            margin-top: 6px; font-weight: 300;
+        }
+        .hero-proprietor {
+            font-size: clamp(0.7rem, 0.9vw, 0.85rem);
+            text-transform: uppercase; letter-spacing: 4px;
+            color: var(--text-muted);
+            margin: 18px 0 16px; display: block;
+        }
+        .hero-motto {
+            font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+            font-weight: 300; color: #f5f0e6;
+            max-width: 700px; line-height: 1.8;
+            margin: 0 auto 28px; font-style: italic;
+            text-shadow: 1px 1px 12px rgba(0,0,0,0.7);
+            border-left: 3px solid var(--accent-gold);
+            padding-left: 20px; text-align: left;
+        }
+        .hero-motto strong { color: var(--accent-gold); font-weight: 600; }
+        .hero-description {
+            font-size: clamp(1rem, 1.3vw, 1.2rem);
+            font-weight: 300; color: #e8e8e8;
+            max-width: 650px; line-height: 1.9;
+            margin: 0 auto 36px;
+        }
+        .hero-actions { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; width: 100%; }
+
+        /* ========== BUTTONS ========== */
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+            padding: clamp(14px, 1.8vw, 16px) clamp(24px, 3vw, 38px);
+            font-size: clamp(0.75rem, 0.9vw, 0.9rem);
+            font-weight: 700; border-radius: 6px;
+            transition: var(--transition-smooth);
+            text-transform: uppercase; letter-spacing: 2px;
+            border: 1px solid transparent; cursor: pointer;
+            min-width: clamp(160px, 20vw, 200px); min-height: 52px;
+            touch-action: manipulation;
+        }
+        .btn-primary {
+            background-color: var(--accent-gold); color: var(--bg-color);
+            border-color: var(--accent-gold);
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.25);
+        }
+        .btn-primary:hover { background-color: var(--accent-gold-hover); border-color: var(--accent-gold-hover); transform: translateY(-3px); box-shadow: 0 8px 32px rgba(212,175,55,0.45); }
+        .btn-outline {
+            background-color: transparent; color: var(--accent-gold);
+            border-color: var(--accent-gold);
+        }
+        .btn-outline:hover { background-color: rgba(212,175,55,0.10); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(212,175,55,0.15); }
+        .btn-whatsapp {
+            background-color: #25D366; color: #fff;
+            border-color: #25D366;
+        }
+        .btn-whatsapp:hover { background-color: #1ebe5a; border-color: #1ebe5a; transform: translateY(-3px); box-shadow: 0 8px 28px rgba(37,211,102,0.35); }
+
+        /* ========== WAVE DIVIDER – Animated ========== */
+        .wave-divider {
+            position: absolute; bottom: 0; left: 0; width: 100%; overflow: hidden; line-height: 0;
+            transform: translateY(2px); z-index: 2; height: clamp(80px, 15vw, 160px);
+        }
+        .wave-divider svg {
+            position: relative; display: block; width: 200%; height: 100%;
+            animation: waveFlow 12s linear infinite;
+        }
+        @keyframes waveFlow { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .wave-divider .fill-1 { fill: rgba(20,20,20,0.20); }
+        .wave-divider .fill-2 { fill: rgba(20,20,20,0.50); }
+        .wave-divider .fill-3 { fill: var(--bg-color); transition: fill 1s ease; }
+
+        /* ========== TRUST BANNER ========== */
+        .trust-banner {
+            background: var(--surface-color); border-bottom: 1px solid rgba(255,255,255,0.03);
+            padding: clamp(28px, 4vw, 40px) 20px;
+            transition: background 1s ease, border-color 1s ease;
+        }
+        .trust-grid {
+            max-width: 1100px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(140px,1fr));
+            gap: clamp(20px, 3vw, 30px); text-align: center;
+        }
+        .trust-item { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+        .trust-item .number {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            color: var(--accent-gold); font-weight: 700; line-height: 1.2;
+            transition: color 1s ease;
+        }
+        .trust-item .label {
+            font-size: clamp(0.7rem, 0.9vw, 0.85rem);
+            text-transform: uppercase; letter-spacing: 2px;
+            color: var(--text-muted);
+            transition: color 1s ease;
+        }
+
+        /* ========== SECTIONS ========== */
+        .container { max-width: 1200px; margin: 0 auto; padding: clamp(48px, 8vw, 80px) clamp(16px, 3vw, 20px); }
+        .section-header { text-align: center; margin-bottom: clamp(32px, 5vw, 50px); display: flex; flex-direction: column; align-items: center; }
+        .section-header h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); color: var(--text-main); letter-spacing: 1px; margin-bottom: 14px; transition: color 1s ease; }
+        .divider { width: 70px; height: 2px; background: var(--accent-gold); margin: 0 auto; border-radius: 4px; transition: background 1s ease; }
+        .section-sub { color: var(--text-muted); font-size: clamp(0.95rem, 1.1vw, 1.05rem); max-width: 600px; text-align: center; margin: 16px auto 0; transition: color 1s ease; }
+
+        /* ========== SERVICES ========== */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px,100%),1fr)); gap: clamp(20px, 3vw, 30px); }
+        .service-card {
+            padding: clamp(32px, 4vw, 48px) clamp(20px, 3vw, 28px) clamp(28px, 3.5vw, 40px);
+            text-align: center; background: var(--surface-color);
+            border: 1px solid rgba(255,255,255,0.03); border-bottom: 3px solid transparent;
+            border-radius: var(--radius-card);
+            transition: var(--transition-smooth), background 1s ease, border-color 1s ease;
+            display: flex; flex-direction: column; align-items: center;
+        }
+        .service-card:hover { background: var(--surface-light); transform: translateY(-8px); border-bottom-color: var(--accent-gold); box-shadow: 0 12px 36px rgba(0,0,0,0.7); }
+        .service-card .icon { font-size: clamp(2rem, 3vw, 2.6rem); color: var(--accent-gold); margin-bottom: 22px; transition: transform 0.4s ease, color 1s ease; }
+        .service-card:hover .icon { transform: scale(1.12) rotate(-2deg); }
+        .service-card h3 { font-size: clamp(1.1rem, 1.5vw, 1.4rem); margin-bottom: 12px; color: var(--text-main); letter-spacing: 0.5px; transition: color 1s ease; }
+        .service-card p { color: var(--text-muted); font-size: clamp(0.9rem, 1vw, 1rem); line-height: 1.7; transition: color 1s ease; }
+
+        /* ========== TESTIMONIALS ========== */
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px,100%),1fr)); gap: clamp(20px, 3vw, 30px); }
+        .testimonial-card {
+            background: var(--surface-color); padding: clamp(28px, 4vw, 36px) clamp(20px, 3vw, 30px) clamp(24px, 3vw, 32px);
+            border-radius: var(--radius-card); border: 1px solid rgba(255,255,255,0.03);
+            transition: var(--transition-smooth), background 1s ease, border-color 1s ease;
+            display: flex; flex-direction: column;
+        }
+        .testimonial-card:hover { background: var(--surface-light); transform: translateY(-4px); border-color: rgba(212,175,55,0.15); }
+        .testimonial-card blockquote { font-style: italic; color: var(--text-muted); line-height: 1.7; font-size: clamp(0.9rem, 1vw, 1rem); flex: 1; transition: color 1s ease; }
+        .testimonial-card .author { margin-top: 18px; font-weight: 700; color: var(--text-main); font-size: clamp(0.85rem, 0.95vw, 0.95rem); transition: color 1s ease; }
+        .testimonial-card .author small { font-weight: 400; color: var(--text-muted); font-size: 0.8rem; display: block; margin-top: 2px; transition: color 1s ease; }
+
+        /* ========== CONNECTION BOX ========== */
+        .connection-section {
+            background: var(--bg-color); padding: clamp(48px, 8vw, 80px) 20px;
+            border-top: 1px solid rgba(212,175,55,0.08); border-bottom: 1px solid rgba(212,175,55,0.08);
+            transition: background 1s ease, border-color 1s ease;
+        }
+        .connection-box {
+            max-width: 900px; margin: 0 auto; background: var(--surface-color);
+            border-radius: 20px; border: 1px solid rgba(212,175,55,0.12);
+            padding: clamp(32px, 5vw, 56px) clamp(24px, 4vw, 48px);
+            display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4vw, 40px);
+            align-items: center; box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+            position: relative; overflow: hidden;
+            transition: background 1s ease, border-color 1s ease, box-shadow 1s ease;
+        }
+        .connection-box::before {
+            content: ''; position: absolute; top: -50%; right: -30%; width: 60%; height: 200%;
+            background: radial-gradient(circle, rgba(212,175,55,0.04) 0%, transparent 70%);
+            pointer-events: none; border-radius: 50%;
+        }
+        .connection-left { position: relative; z-index: 1; }
+        .connection-left .badge {
+            display: inline-block; background: rgba(212,175,55,0.12); color: var(--accent-gold);
+            font-size: clamp(0.6rem, 0.7vw, 0.7rem); text-transform: uppercase; letter-spacing: 3px;
+            padding: 6px 16px; border-radius: 30px; border: 1px solid rgba(212,175,55,0.15);
+            margin-bottom: 16px; font-weight: 700;
+            transition: background 1s ease, color 1s ease, border-color 1s ease;
+        }
+        .connection-left h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--text-main); line-height: 1.2; margin-bottom: 12px; transition: color 1s ease; }
+        .connection-left .sub { color: var(--text-muted); font-size: clamp(0.95rem, 1.1vw, 1.05rem); line-height: 1.7; margin-bottom: 20px; transition: color 1s ease; }
+        .connection-phone { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+        .phone-item {
+            display: flex; align-items: center; gap: 14px;
+            background: rgba(212,175,55,0.06); border: 1px solid rgba(212,175,55,0.10);
+            border-radius: 12px; padding: 12px 22px; flex-wrap: wrap;
+            transition: background 1s ease, border-color 1s ease;
+            cursor: pointer;
+        }
+        .phone-item:hover { background: rgba(212,175,55,0.12); border-color: var(--accent-gold); }
+        .phone-item .phone-icon { font-size: 1.4rem; color: var(--accent-gold); flex-shrink: 0; transition: color 1s ease; }
+        .phone-item .number { font-family: 'Playfair Display', serif; font-size: clamp(1.1rem, 1.6vw, 1.5rem); color: var(--text-main); letter-spacing: 1px; font-weight: 600; transition: color 1s ease; }
+        .phone-item .label-sm { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-left: auto; transition: color 1s ease; }
+        .connection-right { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 16px; }
+        .connection-right .btn { width: 100%; min-width: unset; justify-content: center; }
+        .connection-divider { display: flex; align-items: center; gap: 12px; color: var(--text-muted); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.5; transition: color 1s ease; }
+        .connection-divider::before, .connection-divider::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.06); }
+
+        /* ========== CONTACT ========== */
+        .contact-section {
+            background: var(--surface-color); padding: clamp(48px, 8vw, 80px) 20px;
+            border-top: 1px solid rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.03);
+            transition: background 1s ease, border-color 1s ease;
+        }
+        .contact-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px,100%),1fr)); gap: clamp(24px, 3vw, 36px); }
+        .contact-card {
+            background: var(--bg-color); padding: clamp(32px, 4vw, 44px) clamp(20px, 3vw, 32px) clamp(28px, 3.5vw, 40px);
+            text-align: center; border: 1px solid rgba(255,255,255,0.04); border-radius: var(--radius-card);
+            transition: var(--transition-smooth), background 1s ease, border-color 1s ease;
+            display: flex; flex-direction: column; align-items: center;
+        }
+        .contact-card:hover { transform: translateY(-5px); border-color: rgba(212,175,55,0.20); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .contact-card .icon { font-size: clamp(1.8rem, 2.5vw, 2.2rem); color: var(--accent-gold); margin-bottom: 20px; transition: color 1s ease; }
+        .contact-card h3 { font-size: clamp(1.1rem, 1.4vw, 1.4rem); margin-bottom: 10px; color: var(--text-main); transition: color 1s ease; }
+        .contact-card p { color: var(--text-muted); margin-bottom: 24px; font-size: clamp(0.9rem, 1vw, 1rem); line-height: 1.7; transition: color 1s ease; }
+        .contact-card .btn { width: 100%; min-width: unset; }
+
+        /* ========== FLOATING BUTTON ========== */
+        .fab-connect {
+            position: fixed; bottom: clamp(20px, 3vh, 30px); right: clamp(16px, 2vw, 28px);
+            z-index: 1000; display: flex; flex-direction: column; align-items: center; gap: 10px;
+        }
+        .fab-connect .fab-main {
+            width: clamp(60px, 7vw, 72px); height: clamp(60px, 7vw, 72px);
+            border-radius: 50%; background: var(--accent-gold); color: var(--bg-color);
+            border: none; font-size: clamp(1.4rem, 1.8vw, 1.8rem);
+            cursor: pointer; box-shadow: 0 8px 32px rgba(212,175,55,0.35);
+            transition: var(--transition-smooth), background 1s ease, color 1s ease;
+            display: flex; align-items: center; justify-content: center;
+            position: relative;
+        }
+        .fab-connect .fab-main .pulse-ring {
+            position: absolute; inset: -8px; border-radius: 50%;
+            border: 2px solid rgba(212,175,55,0.2);
+            animation: pulseRing 2s ease-out infinite;
+        }
+        @keyframes pulseRing { 0% { transform:scale(1); opacity:1; } 100% { transform:scale(1.6); opacity:0; } }
+        .fab-connect .fab-actions {
+            display: flex; flex-direction: column; gap: 10px;
+            opacity: 0; transform: translateY(20px) scale(0.8);
+            pointer-events: none;
+            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-origin: bottom center;
+        }
+        .fab-connect.open .fab-actions { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+        .fab-connect .fab-action {
+            width: clamp(50px, 5.5vw, 56px); height: clamp(50px, 5.5vw, 56px);
+            border-radius: 50%; border: none; color: #fff;
+            font-size: clamp(1.1rem, 1.4vw, 1.4rem);
+            cursor: pointer; box-shadow: 0 6px 24px rgba(0,0,0,0.5);
+            transition: var(--transition-smooth);
+            display: flex; align-items: center; justify-content: center;
+            text-decoration: none;
+        }
+        .fab-action.call { background: #4CAF50; }
+        .fab-action.whatsapp { background: #25D366; }
+        .fab-action.email { background: #6366f1; }
+        .fab-tooltip {
+            position: absolute; right: calc(100% + 16px); top: 50%; transform: translateY(-50%);
+            background: rgba(0,0,0,0.85); color: #fff; padding: 4px 14px;
+            border-radius: 6px; font-size: 0.7rem; white-space: nowrap;
+            opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .fab-action:hover .fab-tooltip { opacity: 1; }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: var(--bg-color); color: var(--text-muted);
+            text-align: center; padding: clamp(32px, 5vw, 40px) 20px clamp(24px, 4vw, 32px);
+            font-size: clamp(0.8rem, 0.9vw, 0.9rem); letter-spacing: 0.5px;
+            transition: background 1s ease, color 1s ease;
+        }
+        footer .gold { color: var(--accent-gold); transition: color 1s ease; }
+        footer .social-links { display: flex; justify-content: center; gap: clamp(16px, 2vw, 22px); margin: 18px 0 14px; }
+        footer .social-links a {
+            color: var(--text-muted); font-size: clamp(1.1rem, 1.3vw, 1.3rem);
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 44px; height: 44px; border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.04);
+        }
+        footer .social-links a:hover { color: var(--accent-gold); transform: translateY(-2px); border-color: rgba(212,175,55,0.15); }
+        footer small { display: block; margin-top: 10px; font-size: clamp(0.65rem, 0.7vw, 0.75rem); opacity: 0.5; letter-spacing: 1px; }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 992px) {
+            .hero-brand-name { font-size: clamp(2.2rem, 5vw, 2.8rem); }
+            .hero-content { padding: 36px 28px 40px; }
+            .section-header h2 { font-size: clamp(1.8rem, 3.5vw, 2.2rem); }
+            .connection-box { grid-template-columns: 1fr; text-align: center; }
+            .connection-left .badge { margin: 0 auto 16px; }
+            .phone-item { justify-content: center; }
+            .phone-item .label-sm { margin-left: 0; width: 100%; text-align: center; }
+            .connection-right .btn { max-width: 320px; margin: 0 auto; }
+            .hero-motto { text-align: center; border-left: none; padding-left: 0; }
+        }
+        @media (max-width: 768px) {
+            .hero { min-height: calc(100vh - 60px); padding: 40px 16px 140px; background-attachment: scroll; }
+            .hero-content { padding: 28px 18px 32px; backdrop-filter: blur(6px); border-radius: 14px; border-width: 1px; }
+            .hero-brand-name { font-size: clamp(1.6rem, 6vw, 2rem); }
+            .hero-brand-tagline { font-size: 0.7rem; letter-spacing: 4px; }
+            .hero-motto { font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px; text-align: center; border-left: none; padding-left: 0; }
+            .hero-description { font-size: 0.95rem; line-height: 1.7; margin-bottom: 28px; }
+            .hero-actions { flex-direction: column; width: 100%; max-width: 320px; margin: 0 auto; gap: 14px; }
+            .btn { width: 100%; min-width: unset; padding: 14px 20px; font-size: 0.8rem; min-height: 48px; }
+            .wave-divider { height: 60px; }
+            .splash-title { font-size: clamp(1.6rem, 5vw, 2.2rem); }
+            .splash-logo { width: 80px; height: 80px; }
+            .trust-item .number { font-size: 1.6rem; }
+            .trust-item .label { font-size: 0.7rem; letter-spacing: 1px; }
+            .container { padding: 40px 16px; }
+            .section-header h2 { font-size: 1.6rem; }
+            .section-sub { font-size: 0.9rem; }
+            .services-grid, .testimonials-grid, .contact-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+            .brand-logo-svg { width: 70px; height: 70px; }
+            .contact-section, .connection-section { padding: 40px 16px; }
+            .connection-box { padding: 28px 20px 32px; border-radius: 16px; gap: 24px; }
+            .connection-left h2 { font-size: 1.5rem; }
+            .connection-left .sub { font-size: 0.9rem; }
+            .phone-item { padding: 10px 14px; gap: 10px; flex-wrap: wrap; justify-content: center; }
+            .phone-item .number { font-size: 1.1rem; }
+            .phone-item .phone-icon { font-size: 1.2rem; }
+            .phone-item .label-sm { font-size: 0.6rem; width: 100%; text-align: center; margin-left: 0; }
+            .connection-right .btn { font-size: 0.75rem; padding: 12px 18px; min-height: 44px; }
+            .fab-connect { bottom: 16px; right: 14px; gap: 8px; }
+            .fab-connect .fab-main { width: 52px; height: 52px; font-size: 1.2rem; }
+            .fab-connect .fab-action { width: 44px; height: 44px; font-size: 1rem; }
+            .fab-tooltip { display: none; }
+            footer .social-links a { width: 40px; height: 40px; font-size: 1rem; }
+        }
+        @media (max-width: 480px) {
+            .hero-brand-name { font-size: 1.5rem; letter-spacing: 1px; }
+            .hero-content { padding: 20px 14px 24px; }
+            .hero-proprietor { font-size: 0.6rem; letter-spacing: 2px; margin: 12px 0 12px; }
+            .hero-description { font-size: 0.85rem; }
+            .hero-motto { font-size: 0.8rem; }
+            .splash-title { font-size: 1.5rem; }
+            .connection-box { padding: 20px 16px 24px; }
+            .connection-left h2 { font-size: 1.3rem; }
+            .phone-item .number { font-size: 0.95rem; }
+            .btn { font-size: 0.7rem; padding: 12px 16px; min-height: 42px; gap: 8px; letter-spacing: 1.5px; }
+            .fab-connect .fab-main { width: 48px; height: 48px; font-size: 1rem; }
+            .fab-connect .fab-action { width: 40px; height: 40px; font-size: 0.9rem; }
+        }
+
+        body.scrollable { overflow: auto; }
+        a:focus-visible, button:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 3px; }
+        @media (prefers-reduced-motion: reduce) {
+            * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+            html { scroll-behavior: auto; }
+            .wave-divider svg { animation: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== SPLASH SCREEN ===== -->
+    <div id="splash-screen" role="dialog" aria-label="Loading">
+        <div class="splash-content">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="splash-logo" aria-hidden="true">
+                <circle cx="50" cy="50" r="48" fill="rgba(212,175,55,0.04)" stroke="rgba(212,175,55,0.20)" stroke-width="1.5" />
+                <path class="thread" d="M 35 25 C 0 5, 5 65, 45 65 C 85 65, 95 25, 65 15 C 40 5, 20 40, 40 85" fill="none" stroke="#D4AF37" stroke-width="2.8" stroke-linecap="round" />
+                <line x1="35" y1="25" x2="65" y2="85" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" />
+                <ellipse cx="36" cy="27" rx="1.8" ry="4.5" fill="#0a0a0a" stroke="#ffffff" stroke-width="1.2" transform="rotate(-63 36 27)" />
+            </svg>
+            <div class="splash-title">Prince Tailor</div>
+            <div class="splash-tagline">Made with fashion</div>
+            <div class="splash-loader" aria-hidden="true"></div>
+        </div>
+    </div>
+
+    <!-- ===== TOP NAV ===== -->
+    <nav class="top-nav" role="navigation">
+        <div class="nav-left">
+            <a href="#" class="nav-logo" aria-label="Prince Ladies Tailor Home">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-hidden="true">
+                    <circle cx="50" cy="50" r="48" fill="rgba(212,175,55,0.04)" stroke="rgba(212,175,55,0.18)" stroke-width="1.5" />
+                    <path d="M 35 25 C 0 5, 5 65, 45 65 C 85 65, 95 25, 65 15 C 40 5, 20 40, 40 85" fill="none" stroke="#D4AF37" stroke-width="2.8" stroke-linecap="round" />
+                    <line x1="35" y1="25" x2="65" y2="85" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" />
+                    <ellipse cx="36" cy="27" rx="1.8" ry="4.5" fill="#0a0a0a" stroke="#ffffff" stroke-width="1.2" transform="rotate(-63 36 27)" />
+                </svg>
+            </a>
+            <span class="brand-name"><span class="gold">Prince</span> Tailor</span>
+        </div>
+        <div class="nav-right">
+            <div class="viksit-bharat" title="Viksit Bharat @ 2047">
+                <span class="flag">🇮🇳</span>
+                <span>Viksit Bharat</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <div id="main-content">
+
+        <!-- HERO -->
+        <header class="hero" role="banner">
+            <div class="hero-content">
+                <div class="hero-logo-wrap">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="brand-logo-svg" aria-hidden="true">
+                        <circle cx="50" cy="50" r="48" fill="rgba(212,175,55,0.04)" stroke="rgba(212,175,55,0.18)" stroke-width="1.5" />
+                        <path class="thread-path" d="M 35 25 C 0 5, 5 65, 45 65 C 85 65, 95 25, 65 15 C 40 5, 20 40, 40 85" fill="none" stroke="#D4AF37" stroke-width="2.8" stroke-linecap="round" />
+                        <line x1="35" y1="25" x2="65" y2="85" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" />
+                        <ellipse cx="36" cy="27" rx="1.8" ry="4.5" fill="#0a0a0a" stroke="#ffffff" stroke-width="1.2" transform="rotate(-63 36 27)" />
+                    </svg>
+                    <h1 class="hero-brand-name">Prince<br />Ladies Tailor</h1>
+                    <div class="hero-brand-tagline">Bespoke Elegance</div>
+                </div>
+                <span class="hero-proprietor">Proprietor: Haresh V. Kalani</span>
+                <div class="hero-motto">
+                    <i class="fa-solid fa-quote-left" style="color: var(--accent-gold); margin-right: 8px; opacity: 0.7;"></i>
+                    Location is just a dot on the map — our commitment to your <strong>happiness</strong> and <strong>satisfaction</strong> is boundless. From our village workshop to your heart, we stitch dreams with precision and love.
+                    <i class="fa-solid fa-quote-right" style="color: var(--accent-gold); margin-left: 8px; opacity: 0.7;"></i>
+                </div>
+                <p class="hero-description">
+                    Specialists in bespoke Dresses, Blouses, Gowns, and Chaniya Choli.
+                    Precision tailoring crafted to mirror your perfect style.
+                </p>
+                <div class="hero-actions">
+                    <a href="tel:+919537328784" class="btn btn-primary" aria-label="Call Prince Ladies Tailor"><i class="fa-solid fa-phone" aria-hidden="true"></i> Call Studio</a>
+                    <a href="https://maps.app.goo.gl/mBb8TSAUzbquiYbs5" target="_blank" rel="noopener noreferrer" class="btn btn-outline" aria-label="Get directions"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Get Directions</a>
+                    <a href="https://wa.me/919537328784?text=Hello%20Prince%20Ladies%20Tailor%2C%20I'd%20like%20to%20inquire%20about%20custom%20tailoring." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" aria-label="Contact via WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
+                </div>
+            </div>
+            <!-- Animated Wave -->
+            <div class="wave-divider" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 160" preserveAspectRatio="none">
+                    <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="fill-1"></path>
+                    <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="fill-2"></path>
+                    <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="fill-3"></path>
+                    <path d="M1200,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="fill-1"></path>
+                    <path d="M1200,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="fill-2"></path>
+                    <path d="M1200,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="fill-3"></path>
+                </svg>
+            </div>
+        </header>
+
+        <!-- TRUST -->
+        <section class="trust-banner" aria-label="Trust indicators">
+            <div class="trust-grid">
+                <div class="trust-item"><span class="number">15+</span><span class="label">Years Expertise</span></div>
+                <div class="trust-item"><span class="number">2K+</span><span class="label">Happy Clients</span></div>
+                <div class="trust-item"><span class="number">100%</span><span class="label">Bespoke Craft</span></div>
+            </div>
+        </section>
+
+        <!-- SERVICES -->
+        <section class="container" aria-labelledby="services-heading">
+            <div class="section-header">
+                <h2 id="services-heading">Our Expertise</h2>
+                <div class="divider"></div>
+                <p class="section-sub">Every garment is a masterpiece of precision, fit, and elegance.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card"><i class="fa-solid fa-wand-magic-sparkles icon" aria-hidden="true"></i><h3>Designer Dresses</h3><p>Custom-fitted silhouettes tailored precisely to your measurements and style preferences.</p></div>
+                <div class="service-card"><i class="fa-solid fa-scissors icon" aria-hidden="true"></i><h3>Bespoke Blouses</h3><p>From traditional cuts to modern designs, tailored with absolute precision and care.</p></div>
+                <div class="service-card"><i class="fa-solid fa-person-dress icon" aria-hidden="true"></i><h3>Elegant Gowns</h3><p>Flowing, sophisticated gowns crafted for your most important special occasions.</p></div>
+                <div class="service-card"><i class="fa-solid fa-star icon" aria-hidden="true"></i><h3>Chaniya Choli</h3><p>Authentic and beautifully detailed ethnic wear designed to make you stand out.</p></div>
+            </div>
+        </section>
+
+        <!-- CONNECTION BOX -->
+        <section class="connection-section" aria-labelledby="connect-heading">
+            <div class="connection-box">
+                <div class="connection-left">
+                    <span class="badge"><i class="fa-regular fa-heart" style="margin-right:6px;"></i> Let's Connect</span>
+                    <h2 id="connect-heading">Speak with Our Master Tailor</h2>
+                    <p class="sub">Have a design in mind? Call us directly or reach out via WhatsApp. We're here to bring your vision to life with precision and care.</p>
+                    <div class="connection-phone">
+                        <a href="tel:+919537328784" class="phone-item" aria-label="Call primary number">
+                            <span class="phone-icon"><i class="fa-solid fa-phone-volume"></i></span>
+                            <span class="number">+91 95373 28784</span>
+                            <span class="label-sm">Primary</span>
+                        </a>
+                        <a href="tel:+917383647852" class="phone-item" aria-label="Call secondary number">
+                            <span class="phone-icon"><i class="fa-solid fa-phone"></i></span>
+                            <span class="number">+91 73836 47852</span>
+                            <span class="label-sm">Secondary</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="connection-right">
+                    <a href="tel:+919537328784" class="btn btn-primary"><i class="fa-solid fa-phone" aria-hidden="true"></i> Call Now</a>
+                    <a href="https://wa.me/919537328784?text=Hello%20Prince%20Ladies%20Tailor%2C%20I'd%20like%20to%20inquire%20about%20custom%20tailoring." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
+                    <div class="connection-divider">or</div>
+                    <a href="mailto:contact.princetailor@gmail.com" class="btn btn-outline" style="border-color:rgba(255,255,255,0.10);color:var(--text-muted);"><i class="fa-regular fa-envelope" aria-hidden="true"></i> Send Email</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS -->
+        <section class="container" aria-labelledby="testimonials-heading" style="padding-top:20px;">
+            <div class="section-header">
+                <h2 id="testimonials-heading">Kind Words</h2>
+                <div class="divider"></div>
+                <p class="section-sub">What our clients say about their experience with us.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card"><blockquote>“Absolutely stunning work! My Chaniya Choli was perfect — the fit, the fabric, everything. Haresh bhai is a true master.”</blockquote><div class="author">— Priya S. <small>Vadodara</small></div></div>
+                <div class="testimonial-card"><blockquote>“I've never had a blouse that fits this well. The attention to detail is incredible. Highly recommend Prince Ladies Tailor!”</blockquote><div class="author">— Anjali M. <small>Mumbai</small></div></div>
+                <div class="testimonial-card"><blockquote>“From consultation to final fitting, the experience was seamless. My wedding gown was beyond my expectations.”</blockquote><div class="author">— Neha R. <small>Surat</small></div></div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section class="contact-section" aria-labelledby="contact-heading">
+            <div class="section-header">
+                <h2 id="contact-heading">Visit The Studio</h2>
+                <div class="divider"></div>
+                <p class="section-sub">Let's bring your vision to life — reach out or visit our atelier.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <i class="fa-solid fa-clock icon" aria-hidden="true"></i>
+                    <h3>Consultation</h3>
+                    <p>Call or WhatsApp us to discuss your design with our master tailor.</p>
+                    <a href="tel:+919537328784" class="btn btn-primary"><i class="fa-solid fa-phone" aria-hidden="true"></i> +91 95373 28784</a>
+                    <a href="tel:+917383647852" class="btn btn-outline" style="margin-top: 10px; width:100%;"><i class="fa-solid fa-phone" aria-hidden="true"></i> +91 73836 47852</a>
+                </div>
+                <div class="contact-card">
+                    <i class="fa-solid fa-map-location-dot icon" aria-hidden="true"></i>
+                    <h3>Atelier Location</h3>
+                    <p>Near Ramji Mandir, Ranoli<br />Vadodara, Gujarat</p>
+                    <a href="https://maps.app.goo.gl/mBb8TSAUzbquiYbs5" target="_blank" rel="noopener noreferrer" class="btn btn-outline"><i class="fa-solid fa-directions" aria-hidden="true"></i> Open in Maps</a>
+                </div>
+                <div class="contact-card">
+                    <i class="fa-regular fa-envelope icon" aria-hidden="true"></i>
+                    <h3>Email Us</h3>
+                    <p>Prefer to write? Drop us a note and we'll respond promptly.</p>
+                    <a href="mailto:contact.princetailor@gmail.com" class="btn btn-outline"><i class="fa-regular fa-envelope" aria-hidden="true"></i> Send Email</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer role="contentinfo">
+            <div class="social-links">
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://wa.me/919537328784" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+            <p>&copy; 2026 <span class="gold">Prince Ladies Tailor</span>. Crafted with absolute precision.</p>
+            <p style="font-size:0.8rem; margin-top:4px; color:var(--text-muted);"><i class="fa-regular fa-envelope" style="margin-right:6px;"></i> contact.princetailor@gmail.com</p>
+            <small>Made with passion in Vadodara ♥</small>
+        </footer>
+    </div>
+
+    <!-- ===== FLOATING BUTTON ===== -->
+    <div class="fab-connect" id="fabConnect" role="toolbar" aria-label="Quick contact options">
+        <div class="fab-actions">
+            <a href="tel:+919537328784" class="fab-action call" aria-label="Call us"><i class="fa-solid fa-phone"></i><span class="fab-tooltip">Call</span></a>
+            <a href="https://wa.me/919537328784?text=Hello%20Prince%20Ladies%20Tailor%2C%20I'd%20like%20to%20inquire%20about%20custom%20tailoring." target="_blank" rel="noopener noreferrer" class="fab-action whatsapp" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i><span class="fab-tooltip">WhatsApp</span></a>
+            <a href="mailto:contact.princetailor@gmail.com" class="fab-action email" aria-label="Email"><i class="fa-regular fa-envelope"></i><span class="fab-tooltip">Email</span></a>
+        </div>
+        <button class="fab-main" id="fabToggle" aria-label="Toggle contact options" aria-expanded="false">
+            <span class="pulse-ring"></span>
+            <i class="fa-regular fa-message" id="fabIcon"></i>
+        </button>
+    </div>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script>
+        (function() {
+            // Splash
+            const splash = document.getElementById('splash-screen');
+            const body = document.body;
+            body.style.overflow = 'hidden';
+            function dismissSplash() {
+                if (splash.classList.contains('slide-up')) return;
+                splash.classList.add('slide-up');
+                body.classList.add('scrollable');
+                body.style.overflow = 'auto';
+                setTimeout(() => { splash.style.display = 'none'; }, 1200);
+            }
+            setTimeout(dismissSplash, 2800);
+            splash.addEventListener('click', function(e) {
+                if (!e.target.closest('a') && !e.target.closest('button')) dismissSplash();
+            });
+
+            // Time-based theme
+            function setTheme() {
+                const hour = new Date().getHours();
+                let theme = 'night';
+                if (hour >= 6 && hour < 12) theme = 'morning';
+                else if (hour >= 12 && hour < 18) theme = 'afternoon';
+                body.classList.remove('theme-morning', 'theme-afternoon', 'theme-night');
+                body.classList.add('theme-' + theme);
+            }
+            setTheme();
+            setInterval(setTheme, 3600000);
+
+            // FAB
+            const fabToggle = document.getElementById('fabToggle');
+            const fabConnect = document.getElementById('fabConnect');
+            const fabIcon = document.getElementById('fabIcon');
+            if (fabToggle && fabConnect) {
+                fabToggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const isOpen = fabConnect.classList.toggle('open');
+                    fabToggle.setAttribute('aria-expanded', isOpen);
+                    fabIcon.className = isOpen ? 'fa-solid fa-xmark' : 'fa-regular fa-message';
+                });
+                document.addEventListener('click', function(e) {
+                    if (!fabConnect.contains(e.target)) {
+                        fabConnect.classList.remove('open');
+                        fabToggle.setAttribute('aria-expanded', 'false');
+                        fabIcon.className = 'fa-regular fa-message';
+                    }
+                });
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && fabConnect.classList.contains('open')) {
+                        fabConnect.classList.remove('open');
+                        fabToggle.setAttribute('aria-expanded', 'false');
+                        fabIcon.className = 'fa-regular fa-message';
+                    }
+                });
+            }
+
+            // Anchor scroll
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    const targetEl = document.querySelector(targetId);
+                    if (targetEl) {
+                        e.preventDefault();
+                        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>            --hero-bg-end: #eef2f5;
             --shadow-heavy: 0 25px 50px rgba(0, 0, 0, 0.12);
         }
 
